@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Registro | EsTuMatricula</title>
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+        <!-- Alertas personalizadas -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.css" id="theme-styles">
+    </head>
+    <body class="bg-orange-light">
+        <div id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                <main>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-2">Registrarme en EsTuMatricula</h3></div>
+                                    <div class="card-body">
+                                        <form onsubmit="return false;" id="formRegistro">
+                                            <div class="form-row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="small mb-1" for="inputFirstName">Nombre(s)</label>
+                                                        <input class="form-control py-2" id="nombres" type="text"  placeholder="Ingresa tu(s) nombre(s)" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="small mb-1" for="inputLastName">Apellidos</label>
+                                                        <input class="form-control py-2" id="apellidos" type="text" placeholder="Ingresa tus apellidos" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="small mb-1" for="inputLastName">Tipo doc</label>
+                                                        <select class="form-control py-2" id="tipodoc" required>
+                                                            <option>CC</option>
+                                                            <option>PEP</option>
+                                                            <option>NIT</option>
+                                                            <option>Pasaporte</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="small mb-1" for="inputLastName">Nro documento</label>
+                                                        <input class="form-control py-2" id="documento" type="text" placeholder="Documento" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="small mb-1" for="inputEmailAddress">Correo electrónico</label>
+                                                <input class="form-control py-" id="correo" type="email" aria-describedby="emailHelp" placeholder="Ingresa tu email" required>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="small mb-1" for="inputPassword">Contraseña</label>
+                                                        <input class="form-control py-2" id="pass" type="password" placeholder="Ingresa tu contraseña" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="small mb-1" for="inputConfirmPassword">Confirma tu contraseña</label>
+                                                        <input class="form-control py-2" id="pass_two" type="password" placeholder="Confirma tu contraseña" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mt-2 mb-0"><button class="btn btn-yellow-light btn-block" id="btnRegistrar">Registrarme</button></div>
+                                        </form>
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <div class="small">Ya tienes una cuenta? <a href="login.html">Inicia sesión</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="myModal">
+              <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Registrado!</h5>
+                    <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>-->
+                  </div>
+                    <div class="modal-body">
+                        Estimado/a <b id="name"></b>, su registro ha concluido de manera éxitosa! Su <b id="dni_type"></b> con número <b id="nro_dni"></b>
+                        ha sido guardado en nuestra base de datos y de ahora en adelante, será su identificador en el sistema.
+                        <p>A su correo (<i id="correoElectronico"></i>) fue enviado un mail con las instrucciones de configuración.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                      <button type="button" class="btn btn-success" id="btnConfirmDialogOk">Okey</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div id="layoutAuthentication_footer">
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; EsTuMatricula 2020</div>
+                            <div>
+                                <a href="#">Privacidad</a>
+                                    &middot;
+                                <a href="#">Términos &amp; Condiciones</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script>
+            function showDialogData(){
+                $("#myModal").modal("show");
+            }
+            
+            $(document).ready(function(){
+                $("#btnRegistrar").on("click", function(){
+                    var nombres = $('#nombres').val().trim();
+                    var apellidos = $('#apellidos').val().trim();
+                    var tipo_doc = $('#tipodoc').val().trim();
+                    var doc_id = $('#documento').val().trim();
+                    var correo = $('#correo').val().trim();
+                    var passw = $('#pass').val().trim();
+                    var passt = $('#pass_two').val().trim();
+                    if(nombres == "" || apellidos == "" || correo == "" || passw == "" || passt == ""){
+                        Swal.fire({
+                            icon: 'warning',
+                            title: "Ups!",
+                            text: "Revisa los campos y rellénalos todos"
+                         });
+                    }else{
+                        if(passw === passt){
+                            //console.log("Las contraseñas coinciden");
+                            $.post('../registrarme',{
+                                nombre: nombres, 
+                                apellidos: apellidos, 
+                                tipodoc: tipo_doc,
+                                docid: doc_id,
+                                email: correo,
+                                pass: passw,
+                                passConfirm: passt
+                            }, function(responseText){
+                                var json = JSON.parse(responseText);
+                                if(json.success){
+                                    var nombreCompleto = json.info[0].nombres + " " + json.info[0].apellidos;
+                                    $('#name').text(nombreCompleto);
+                                    $('#dni_type').text(json.info[0].tipo_doc);
+                                    $('#nro_dni').text(json.info[0].docid);
+                                    $('#correoElectronico').text(json.info[0].correo);
+                                    $("#myModal").modal("show");
+                                    $("#formRegistro").trigger("reset");
+                                }else{
+                                    Swal.fire({
+                                        icon: 'warning',
+                                        title: "¡Gravísimo!",
+                                        text: json.mensaje
+                                    });
+                                }
+                            });
+                        }else{
+                            Swal.fire({
+                                icon: 'error',
+                                title: "¡Gravísimo!",
+                                text: 'Las contraseñas no coinciden'
+                            });
+                            return false;
+                        }
+                    }
+                })
+            });
+            
+            $('#btnConfirmDialogOk').on("click", function(){
+                $("#myModal").modal("hide");
+            });
+        </script>
+    </body>
+</html>
