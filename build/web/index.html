@@ -171,17 +171,33 @@
     <div class="container">
       <div class="row">
         <div class="col-xl-9 mx-auto">
-          <h2 class="mb-4">Ready to get started? Sign up now!</h2>
+          <h2 class="mb-4">Contactanos</h2>
         </div>
-        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form>
+        <div class="col-md-12 col-lg-8 col-xl-7 mx-auto">
+          <form onsubmit="return false;">
             <div class="form-row">
-              <div class="col-12 col-md-9 mb-2 mb-md-0">
-                <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
-              </div>
-              <div class="col-12 col-md-3">
-                <button type="submit" class="btn btn-block btn-lg btn-primary">Sign up!</button>
-              </div>
+                <div class="col-6 col-md-6 mb-2">
+                    <input type="email" class="form-control" placeholder="escriba su correo" id="correo_contacto" required>
+                </div>
+                <div class="col-6 col-md-6">
+                    <input type="text" class="form-control" placeholder="ingrese su nombre" id="nombres_contacto" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-6 col-md-6 mb-2">
+                    <input type="text" class="form-control" placeholder="cual es su telefono?" id="telefono_contacto" required>
+                </div>
+                <div class="col-6 col-md-6">
+                    <input type="text" class="form-control" placeholder="motivo del contacto" id="motivo_contacto" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-12 col-md-12 mb-2">
+                    <textarea class="form-control" placeholder="escriba su consulta detalladamente" rows="4" id="texto_contacto" required></textarea>
+                </div>
+            </div>
+            <div class="col-6 col-md-12">
+                <button class="btn btn-block btn-lg btn-primary" id="boton_contacto">enviar contacto</button>
             </div>
           </form>
         </div>
@@ -295,6 +311,32 @@
         });
       }
     }
+    
+    $('#boton_contacto').on("click", function(){
+        var correo = $('#correo_contacto').val().trim();
+        var nombres = $('#nombres_contacto').val().trim();
+        var asunto = $('#motivo_contacto').val().trim();
+        var telefono = $('#telefono_contacto').val().trim();
+        var texto = $('#texto_contacto').val().trim();
+        const url = "contactanos";
+        
+        $.post(url,{
+            email: correo,
+            nombre: nombres,
+            motivo: asunto,
+            telefono_contacto: telefono,
+            mensaje: texto
+        },function(responseText){
+            var respuesta = JSON.parse(responseText);
+            if(respuesta.ok){
+                var frase = "Señor/a " + respuesta.info.nombre + ", esté pendiente de su correo ("+respuesta.info.correo+")";
+                console.log(respuesta.info);
+                Swal.fire({icon: 'success',title: respuesta.texto,text: frase });
+            }else{
+                Swal.fire({icon: 'error',title: 'error',text: respuesta.texto});
+            }
+        });
+    });
   </script>
 
 </body>
