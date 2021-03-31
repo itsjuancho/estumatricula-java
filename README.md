@@ -16,7 +16,7 @@ En caso de presentar problemas a la hora de ejecutar el proyecto, se deberá de 
 
 **Todas las carpetas anteriormente generadas, estarán vacías.**
 
-### Designed and Developed by
+## Equipo de desarrollo
 - Tatiana Duque (Login)
 - David Esteban Jiménez (Registro)
 - Juan Andrés Pérez (Buscador de colegios)
