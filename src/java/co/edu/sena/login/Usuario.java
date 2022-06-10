@@ -5,6 +5,10 @@
  */
 package co.edu.sena.login;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 /**
  *
  * @author Tatiana Duque
@@ -15,6 +19,20 @@ public class Usuario {
     public String nombres = "Tatiana";
     public String apellidos = "Duque";
     public String dni = "1005652896";
+    
+    String dBurl = "jdbc:mysql://localhost:3306/java_estumatricula?zeroDateTimeBehavior=convertToNull";
+    Connection cnn;
+    
+    public boolean conectar() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+        try {
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            cnn = DriverManager.getConnection(dBurl,"root","");
+            return true;   
+        } catch (Exception e) {
+            System.out.println("Error: " + e.toString());
+            return false;
+        }
+    }
     
     public String getNombre(){
         return nombres;
