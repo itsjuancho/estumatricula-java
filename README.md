@@ -1,5 +1,5 @@
 # estumatricula-java
-EsTuMatricula it's a web application, developed in Java, that simplifies the serch of schools in Oriente Antioqueño.
+EsTuMatricula es una aplicación web, que busca simplificar la búsqueda de cupos estudiantiles en el Oriente Antioqueño. Versión inicial en Java.
 
 ## Instalación
 
