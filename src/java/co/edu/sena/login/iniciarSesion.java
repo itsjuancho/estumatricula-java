@@ -7,9 +7,6 @@ package co.edu.sena.login;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,47 +35,7 @@ public class iniciarSesion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            try {
-                Usuario User = new Usuario();
-                Login login = new Login();
-                login.setCorreo(request.getParameter("email").trim());
-                login.setPassword(request.getParameter("password").trim());
-                //boolean estado = false;
-                
-                if (User.conectar()) {
-                    //out.println("Conectado!");
-                } else {
-                    out.println("No se pudo conectar");
-                }
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-                Logger.getLogger(prueba.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            /*Login login = new Login();
-            Usuario usuario = new Usuario();
-            login.setCorreo(request.getParameter("email").trim());
-            login.setPassword(request.getParameter("password").trim());
-            if(login.getCorreo().equalsIgnoreCase(usuario.getEmail()) && login.getPassword().equalsIgnoreCase(usuario.getPw())){
-            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-            request.setAttribute("nombres", usuario.getNombre());
-            request.setAttribute("apellidos", usuario.getApellidos());
-            HttpSession miSesion = (HttpSession) request.getSession();
-            miSesion.setAttribute("email", usuario.getEmail());
-            miSesion.setAttribute("dni", usuario.getDni());
-            rd.forward(request, response);
-            }else{
-            out.println("Datos incorrectos o hubo un error.");
-            }
-            TODO output your page here. You may use following sample code.
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet iniciarSesion</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet iniciarSesion at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");*/ 
-            /*Login login = new Login();
+            Login login = new Login();
             Usuario usuario = new Usuario();
             login.setCorreo(request.getParameter("email").trim());
             login.setPassword(request.getParameter("password").trim());
@@ -93,7 +50,7 @@ public class iniciarSesion extends HttpServlet {
             }else{
                 out.println("Datos incorrectos o hubo un error.");
             }
-            TODO output your page here. You may use following sample code. 
+            /* TODO output your page here. You may use following sample code. 
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
